@@ -1,0 +1,16 @@
+import puppeteer from 'puppeteer-core'
+const CHROME = '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'
+const browser = await puppeteer.launch({ executablePath: CHROME, headless: 'new', args: ['--no-sandbox', '--use-angle=metal', '--enable-gpu', '--ignore-gpu-blocklist', '--window-size=1280,720'] })
+const page = await browser.newPage()
+await page.setViewport({ width: 1280, height: 720 })
+await page.goto(`http://127.0.0.1:5213/?shot&pos=46,660,-1.9,0`, { waitUntil: 'domcontentloaded' })
+await page.waitForFunction(() => window.__soglie && window.__soglie.state === 'play', { timeout: 120000 })
+await new Promise((r) => setTimeout(r, 800))
+await page.keyboard.down('KeyW')
+await new Promise((r) => setTimeout(r, 3500))
+await page.keyboard.up('KeyW')
+await new Promise((r) => setTimeout(r, 900))
+await page.evaluate(() => { const p = window.__soglie.player; p.yaw += Math.PI; p.pitch = -0.5 })
+await new Promise((r) => setTimeout(r, 400))
+await page.screenshot({ path: 'shots/prints.png' })
+await browser.close()

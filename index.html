@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>Soglie</title>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta name="description" content="Un deserto di dune, cinque porte, cinque universi. Trova le chiavi." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <canvas id="scene"></canvas>
+
+    <div id="hud">
+      <div id="compass"><span class="needle"></span></div>
+      <div id="crosshair"></div>
+      <div id="card"></div>
+      <div id="message"></div>
+      <div id="inventory"></div>
+      <div id="credits">
+        <div class="loader-kicker">Fine</div>
+        <div class="credits-title">Soglie</div>
+        <p>Grazie per aver attraversato.</p>
+        <p class="credits-small">Ogni porta resta aperta. Puoi tornare in qualunque universo.</p>
+      </div>
+      <div id="keys-hint">WASD cammina &middot; Shift corri &middot; Spazio salta &middot; M audio &middot; Esc pausa</div>
+    </div>
+
+    <div id="loader">
+      <div class="loader-inner">
+        <div class="loader-kicker">Un viaggio tra universi</div>
+        <h1>Soglie</h1>
+        <div class="loader-line"><div id="loader-bar"></div></div>
+        <div id="loader-status">Il vento modella le dune</div>
+        <button id="enter" type="button">Entra</button>
+        <p class="loader-note">Cuffie consigliate. Le chiavi cantano, e il loro canto ti indica la strada.</p>
+      </div>
+    </div>
+
+    <div id="pause">
+      <div class="pause-inner">
+        <div class="loader-kicker">In pausa</div>
+        <h2>Soglie</h2>
+        <div class="pause-actions">
+          <button id="pause-resume" type="button"></button>
+          <button id="pause-mute" type="button"></button>
+          <button id="pause-full" type="button"></button>
+        </div>
+        <dl class="controls">
+          <div><dt>W A S D</dt><dd>cammina</dd></div>
+          <div><dt>Mouse</dt><dd>guarda</dd></div>
+          <div><dt>Shift</dt><dd>corri</dd></div>
+          <div><dt>Spazio</dt><dd>salta</dd></div>
+          <div><dt>Discese</dt><dd>scivola sulle dune</dd></div>
+          <div><dt>M</dt><dd>audio</dd></div>
+        </dl>
+        <div class="settings">
+          <label><input id="pause-invert" type="checkbox" /> Inverti asse verticale</label>
+          <label>Sensibilità <input id="pause-sens" type="range" min="0.4" max="2" step="0.05" value="1" /></label>
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
